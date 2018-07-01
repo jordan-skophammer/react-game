@@ -24,6 +24,10 @@ class App extends Component {
     card: wuMembers
   }
 
+  shuffle = id => {
+    console.log(id)
+  }
+
   changeScore = () => {
 
     let score = this.setState.score++;
@@ -62,6 +66,9 @@ class App extends Component {
               <Wucard
                 image = {card.image}
                 alt = {card.id}
+                shuffle= {this.shuffle}
+                id= {card.id}
+                key = {card.id}
               />
               )}
             </div>
