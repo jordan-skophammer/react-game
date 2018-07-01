@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
+import "./App.css"
 import wuMembers from "./WuMembers.json"
 import Scoreboard from "./components/Scoreboard/Scoreboard"
 import Wucard from './components/Wucard/Wucard';
-
-// const wuMembers = ["wumember1.jpg",
-//   "./images/wumember2.jpg",
-//   "./images/wumember3.jpg",
-//   "./images/wumember4.jpg",
-//   "./images/wumember5.jpg",
-//   "./images/wumember6.jpg",
-//   "./images/wumember7.jpg",
-//   "./images/wumember8.jpg",
-  
-// ]
-
 
 class App extends Component {
 
@@ -24,11 +13,13 @@ class App extends Component {
     card: wuMembers
   }
 
-  shuffle = id => {
+  shuffle = card => {
 
     let counter = this.state.card.length;
     
     let suffledArray = this.state.card;
+
+    let score = this.state.score
 
     while (counter > 0) {
       let index = Math.floor(Math.random() * counter);
@@ -38,53 +29,83 @@ class App extends Component {
       let temp = suffledArray[counter];
       suffledArray[counter] = suffledArray[index];
       suffledArray[index] = temp
-    }
-    // return suffledArray
-    this.setState({suffledArray})
+    };
+    this.setState({suffledArray});
 
-    this.changeScore(id)
+    this.changeScore(score, card);
+
+    console.log(card)
   }
 
-  
+  // clickState = (card) => {
 
-  changeScore = (id) => {
+  //   let clicked = true;
 
-    let score = this.state.score + 1;
+  //   card.clicked = clicked
 
-    console.log(this.state.score)
-    this.setState({score});
+  //   this.changeScore(card);
+  // }
 
-    let topScore = this.state.topScore;
 
-    if (score > topScore) {
-      topScore = score;
-    };
+  changeScore = (score, card) => {
 
-    this.setState({topScore});
+    if (card.clicked === true) {
+      this.resetGame(score, card)
+    }else {
+      score++;
 
-    // let card = {
-    //   id: wuMembers.id,
-    //   image: wuMembers.image
-    // }
-    // this.setState({card})
-    // this.resetGame(score)
+      this.setState({score});
 
-    // if (score > 9) {
-    //   score = 0;
-    // }
-    this.resetGame(score)
+      let topScore = this.state.topScore;
+
+      if (score > topScore) {
+        topScore = score;
+      };
+
+      this.setState({topScore});
+
+      // let card = {
+      //   id: wuMembers.id,
+      //   image: wuMembers.image
+      // }
+      // this.setState({card})
+      // this.resetGame(score)
+
+      // if (score > 9) {
+      //   score = 0;
+      // }
+      let clicked = true;
+
+      card.clicked = clicked
+
+      console.log(card)
+      if (score > 8) {
+        this.resetGame(score, card)
+      }
+      
+    }
+
+    
   };
 
-  resetGame = (score) => {
+  resetGame = (score, card) => {
+
+    // if (card.clicked === true) {
+    //   let clicked = false
+    //   card.clicked = clicked
+    //   score = 0
+    //   this.setState({clicked})
+    //   this.setState({score})
+    // }
+
     
-    if (score > 8) {
-      score = 0 
-    }
-
-    this.setState({score})
-  }
-
-  
+      let clicked = false
+      card.clicked = clicked
+      score = 0
+      this.setState({clicked})
+      this.setState({score})
+    
+  };
 
   render() {
     return (
@@ -94,7 +115,7 @@ class App extends Component {
         topScore={this.state.topScore}
         />
         <div className="container">
-          <div className="row">
+          <div className="row card-grid">
             <div className="col m2"></div>
             <div className="col m8">
               {this.state.card.map(card =>  
@@ -102,7 +123,7 @@ class App extends Component {
                 image = {card.image}
                 alt = {card.id}
                 shuffle= {this.shuffle}
-                id= {card.id}
+                card= {card}
                 key = {card.id}
               />
               )}
