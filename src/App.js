@@ -25,9 +25,6 @@ class App extends Component {
   }
 
   shuffle = id => {
-    console.log(id);
-
-
 
     let counter = this.state.card.length;
     
@@ -42,18 +39,20 @@ class App extends Component {
       suffledArray[counter] = suffledArray[index];
       suffledArray[index] = temp
     }
-    console.log(suffledArray)
     // return suffledArray
     this.setState({suffledArray})
+
+    this.changeScore(id)
   }
 
   
 
-  changeScore = () => {
+  changeScore = (id) => {
 
-    let score = this.setState.score++;
+    let score = this.state.score + 1;
 
-    // this.setState({score});
+    console.log(this.state.score)
+    this.setState({score});
 
     let topScore = this.state.topScore;
 
@@ -68,7 +67,22 @@ class App extends Component {
     //   image: wuMembers.image
     // }
     // this.setState({card})
+    // this.resetGame(score)
+
+    // if (score > 9) {
+    //   score = 0;
+    // }
+    this.resetGame(score)
   };
+
+  resetGame = (score) => {
+    
+    if (score > 8) {
+      score = 0 
+    }
+
+    this.setState({score})
+  }
 
   
 
