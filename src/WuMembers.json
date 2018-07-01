@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/Method_Man_at_Shattuck_Down_Low.jpg/220px-Method_Man_at_Shattuck_Down_Low.jpg"
+    },
+    {
+        "id": 2, 
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0b/RZA_2009_%28cropped%29.jpg/220px-RZA_2009_%28cropped%29.jpg"
+    },
+    {
+        "id": 3,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Gza-01-mika.jpg/220px-Gza-01-mika.jpg"
+    },
+    {
+        "id": 4,
+        "image": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Ghostface_Killah_in_Norway_2010.jpg"
+    },
+    {
+        "id": 5,
+        "image": "https://upload.wikimedia.org/wikipedia/en/5/5c/Ol%27_Dirty_Bastard.jpg"
+    },
+    {
+        "id": 6,
+        "image": "http://www.gstatic.com/tv/thumb/persons/413925/413925_v9_ba.jpg"
+    },
+    {
+        "id": 7,
+        "image": "https://img.discogs.com/MDaWGlKgLDkB2DUn5CqSzVsWm4Y=/442x404/smart/filters:strip_icc():format(jpeg):mode_rgb():quality(90)/discogs-images/A-107494-1488108060-7325.jpeg.jpg"
+    },
+    {
+        "id": 8,
+        "image": "https://bloximages.newyork1.vip.townnews.com/philadelphiaweekly.com/content/tncms/assets/v3/editorial/5/e7/5e7d967e-1cc7-11e8-b593-536606b86297/5a9713d3cf90f.image.jpg?resize=1200%2C897"
+    },
+    {
+        "id": 9,
+        "image": "http://s3.amazonaws.com/hiphopdx-production/2015/06/Screen-Shot-2015-06-04-at-4.07.08-PM.png"
+    }
+]
