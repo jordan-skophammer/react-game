@@ -25,8 +25,29 @@ class App extends Component {
   }
 
   shuffle = id => {
-    console.log(id)
+    console.log(id);
+
+
+
+    let counter = this.state.card.length;
+    
+    let suffledArray = this.state.card;
+
+    while (counter > 0) {
+      let index = Math.floor(Math.random() * counter);
+
+      counter--;
+
+      let temp = suffledArray[counter];
+      suffledArray[counter] = suffledArray[index];
+      suffledArray[index] = temp
+    }
+    console.log(suffledArray)
+    // return suffledArray
+    this.setState({suffledArray})
   }
+
+  
 
   changeScore = () => {
 
@@ -42,11 +63,11 @@ class App extends Component {
 
     this.setState({topScore});
 
-    let card = {
-      id: wuMembers.id,
-      image: wuMembers.image
-    }
-    this.setState({card})
+    // let card = {
+    //   id: wuMembers.id,
+    //   image: wuMembers.image
+    // }
+    // this.setState({card})
   };
 
   
