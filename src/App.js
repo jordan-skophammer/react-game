@@ -1,16 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Scoreboard from "./components/Scoreboard/Scoreboard"
 
 class App extends Component {
+
+  state = {
+    message: "",
+    score: 0,
+    topScore: 0
+  }
+
+  changeScore = () => {
+
+    let score = this.setState.score++;
+
+    this.setState({score});
+
+    let topScore = this.state.topScore;
+
+    if (score > topScore) {
+      topScore = score;
+    };
+
+    this.setState({topScore});
+  };
+
+  
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+        <Scoreboard 
+        score={this.state.score}
+        topScore={this.state.topScore}
+        />
         <p className="App-intro">
+          Testing
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
       </div>
