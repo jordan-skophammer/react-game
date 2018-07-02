@@ -1,5 +1,5 @@
 import React from 'react';
-import "./Scoreboard.css"
+import "./Scoreboard.css";
 
 const Scoreboard = props => (
     <nav className="black yellow-text">
@@ -7,7 +7,7 @@ const Scoreboard = props => (
             <img src="../../../assets/images/wulogo.jpg" alt="wulogo"/>
             <h3 className="brand-logo yellow-text">Wu-Tang Memory Game</h3>
             <div className="right scoreboard">
-                <h3>Score: {props.score}<br /> Top Score: {props.topScore}</h3>
+                <h5>Score: {props.score}<br /> Top Score: {props.topScore}</h5>
             </div>
         </div>
     </nav>

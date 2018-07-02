@@ -1,9 +1,9 @@
 nav {
-    height: 150px;
+    max-height: 150px;
 }
 
 img {
-    width: 100px;
-    height: 100px;
+    max-width: 100px;
+    max-height: 100px;
     padding: 5px;
 }

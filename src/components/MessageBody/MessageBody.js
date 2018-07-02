@@ -13,6 +13,6 @@ const MessageBody = props => (
             </div>
         </div>
     </div>
-)
+);
 
 export default MessageBody;

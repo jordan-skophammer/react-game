@@ -12,7 +12,9 @@ class App extends Component {
     score: 0,
     topScore: 0,
     card: wuMembers
-  }
+  };
+
+  baseState = this.state;
 
   shuffle = card => {
 
@@ -20,7 +22,7 @@ class App extends Component {
     
     let suffledArray = this.state.card;
 
-    let score = this.state.score
+    let score = this.state.score;
 
     while (counter > 0) {
       let index = Math.floor(Math.random() * counter);
@@ -29,39 +31,30 @@ class App extends Component {
 
       let temp = suffledArray[counter];
       suffledArray[counter] = suffledArray[index];
-      suffledArray[index] = temp
+      suffledArray[index] = temp;
     };
     this.setState({suffledArray});
 
     this.changeScore(score, card);
 
-    console.log(card)
   }
-
-  // clickState = (card) => {
-
-  //   let clicked = true;
-
-  //   card.clicked = clicked
-
-  //   this.changeScore(card);
-  // }
-
 
   changeScore = (score, card) => {
 
     if (card.clicked === true) {
-      this.resetGame(score, card)
+      this.resetGame(score, card);
     }else {
 
-      let message = "Correct!"
-      this.setState({message})
+      let message = "Correct!";
+      this.setState({message});
 
       score++;
 
       this.setState({score});
 
-      let topScore = this.state.topScore;
+      let topScore = 0 ;
+
+      this.setState({topScore});
 
       if (score > topScore) {
         topScore = score;
@@ -69,50 +62,31 @@ class App extends Component {
 
       this.setState({topScore});
 
-      // let card = {
-      //   id: wuMembers.id,
-      //   image: wuMembers.image
-      // }
-      // this.setState({card})
-      // this.resetGame(score)
-
-      // if (score > 9) {
-      //   score = 0;
-      // }
       let clicked = true;
 
-      card.clicked = clicked
+      card.clicked = clicked;
 
       if (score > 8) {
-        this.resetGame(score, card)
-      }
+        this.resetGame(score, card);
+      };
       
-    }
+    };
 
-    
+    console.log(this.state);
   };
 
-  resetGame = (score, card) => {
+  resetState = () => {this.setState(this.baseState.clicked)};
 
-    // if (card.clicked === true) {
-    //   let clicked = false
-    //   card.clicked = clicked
-    //   score = 0
-    //   this.setState({clicked})
-    //   this.setState({score})
-    // }
+  resetGame = (score) => {
 
-    
-      let clicked = false
-      card.clicked = clicked
-      this.setState({clicked})
+      this.resetState();
 
-      score = 0
-      this.setState({score})
+      score = 0;
+      this.setState({score});
       
-      let message = "Incorrect, Game Over!"
-      this.setState({message})
-      console.log(this.state)
+      let message = "Incorrect, Game Over!";
+      this.setState({message});
+      console.log(this.state);
   };
 
   render() {
@@ -144,7 +118,7 @@ class App extends Component {
         </div>
       </div>
     );
-  }
-}
+  };
+};
 
 export default App;
