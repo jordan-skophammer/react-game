@@ -3,11 +3,12 @@ import "./App.css"
 import wuMembers from "./WuMembers.json"
 import Scoreboard from "./components/Scoreboard/Scoreboard"
 import Wucard from './components/Wucard/Wucard';
+import MessageBody from "./components/MessageBody/MessageBody";
 
 class App extends Component {
 
   state = {
-    message: "",
+    message: "Click to begin!",
     score: 0,
     topScore: 0,
     card: wuMembers
@@ -52,6 +53,10 @@ class App extends Component {
     if (card.clicked === true) {
       this.resetGame(score, card)
     }else {
+
+      let message = "Correct!"
+      this.setState({message})
+
       score++;
 
       this.setState({score});
@@ -78,7 +83,6 @@ class App extends Component {
 
       card.clicked = clicked
 
-      console.log(card)
       if (score > 8) {
         this.resetGame(score, card)
       }
@@ -101,10 +105,14 @@ class App extends Component {
     
       let clicked = false
       card.clicked = clicked
-      score = 0
       this.setState({clicked})
+
+      score = 0
       this.setState({score})
-    
+      
+      let message = "Incorrect, Game Over!"
+      this.setState({message})
+      console.log(this.state)
   };
 
   render() {
@@ -115,9 +123,12 @@ class App extends Component {
         topScore={this.state.topScore}
         />
         <div className="container">
+          <MessageBody 
+            message= {this.state.message}
+          />
           <div className="row card-grid">
             <div className="col m2"></div>
-            <div className="col m8">
+            <div className="col m8 center-align">
               {this.state.card.map(card =>  
               <Wucard
                 image = {card.image}
