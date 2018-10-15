@@ -7,16 +7,25 @@ import MessageBody from "./components/MessageBody/MessageBody";
 
 class App extends Component {
 
-  state = {
-    message: "Click to begin!",
-    score: 0,
-    topScore: 0,
-    card: wuMembers
-  };
+  constructor() {
+    super();
+
+    this.state = {
+      message: "Click to begin!",
+      score: 0,
+      topScore: 0,
+      card: wuMembers,
+            clicked: false
+    };
+
+    // this.resetGame = this.resetGame.bind(this)
+  }
+
 
   baseState = this.state;
 
   shuffle = card => {
+
 
     let counter = this.state.card.length;
     
@@ -39,6 +48,12 @@ class App extends Component {
 
   }
 
+  changeTopScore = (score) => {
+    let topScore = score
+
+    this.setState({topScore});
+  }
+
   changeScore = (score, card) => {
 
     if (card.clicked === true) {
@@ -52,41 +67,35 @@ class App extends Component {
 
       this.setState({score});
 
-      let topScore = 0 ;
-
-      this.setState({topScore});
-
-      if (score > topScore) {
-        topScore = score;
+      if (score > this.state.topScore) {
+        this.changeTopScore(score)
       };
 
-      this.setState({topScore});
+      // this.setState({topScore});
 
-      let clicked = true;
-
-      card.clicked = clicked;
+      card.clicked = true;
 
       if (score > 8) {
         this.resetGame(score, card);
       };
-      
+      // console.log(this.state);
     };
-
-    console.log(this.state);
   };
 
-  resetState = () => {this.setState(this.baseState.clicked)};
+  // resetState = () => {this.setState(this.baseState.clicked)};
 
-  resetGame = (score) => {
+  resetGame = (score, card) => {
 
-      this.resetState();
-
+      // this.resetState();
+      
+      // console.log(card)
+      this.state.card.map(card => card.clicked = false)
       score = 0;
       this.setState({score});
       
       let message = "Incorrect, Game Over!";
       this.setState({message});
-      console.log(this.state);
+      // console.log(this.state);
   };
 
   render() {
