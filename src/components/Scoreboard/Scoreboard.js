@@ -4,7 +4,7 @@ import "./Scoreboard.css";
 const Scoreboard = props => (
     <nav className="black yellow-text">
         <div className="navbar-wrapper">
-            <img src="../../../assets/images/wulogo.jpg" alt="wulogo"/>
+            <img src="./assets/images/wulogo.jpg" alt="wulogo"/>
             <h3 className="brand-logo yellow-text">Wu-Tang Memory Game</h3>
             <div className="right scoreboard">
                 <h5>Score: {props.score}<br /> Top Score: {props.topScore}</h5>

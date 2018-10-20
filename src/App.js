@@ -17,19 +17,14 @@ class App extends Component {
       card: wuMembers,
             clicked: false
     };
-
-    // this.resetGame = this.resetGame.bind(this)
   }
-
 
   baseState = this.state;
 
   shuffle = card => {
-
-
     let counter = this.state.card.length;
     
-    let suffledArray = this.state.card;
+    let shuffledArray = this.state.card;
 
     let score = this.state.score;
 
@@ -38,11 +33,11 @@ class App extends Component {
 
       counter--;
 
-      let temp = suffledArray[counter];
-      suffledArray[counter] = suffledArray[index];
-      suffledArray[index] = temp;
+      let temp = shuffledArray[counter];
+      shuffledArray[counter] = shuffledArray[index];
+      shuffledArray[index] = temp;
     };
-    this.setState({suffledArray});
+    this.setState({shuffledArray});
 
     this.changeScore(score, card);
 
@@ -71,37 +66,27 @@ class App extends Component {
         this.changeTopScore(score)
       };
 
-      // this.setState({topScore});
-
       card.clicked = true;
 
       if (score > 8) {
         this.resetGame(score, card);
       };
-      // console.log(this.state);
     };
   };
 
-  // resetState = () => {this.setState(this.baseState.clicked)};
-
   resetGame = (score, card) => {
-
-      // this.resetState();
-      
-      // console.log(card)
       this.state.card.map(card => card.clicked = false)
       score = 0;
       this.setState({score});
       
       let message = "Incorrect, Game Over!";
       this.setState({message});
-      // console.log(this.state);
   };
 
   render() {
     return (
       <div className="App">
-        <Scoreboard 
+        <Scoreboard
         score={this.state.score}
         topScore={this.state.topScore}
         />
